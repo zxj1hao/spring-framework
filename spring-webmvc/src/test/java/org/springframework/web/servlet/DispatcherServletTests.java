@@ -27,9 +27,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.PropertyValue;
 import org.springframework.context.ApplicationContextInitializer;
@@ -82,6 +82,12 @@ public class DispatcherServletTests {
 	private DispatcherServlet simpleDispatcherServlet;
 
 	private DispatcherServlet complexDispatcherServlet;
+
+
+	@Test
+	public void testDis(){
+		simpleDispatcherServlet = new DispatcherServlet();
+	}
 
 
 	@BeforeEach

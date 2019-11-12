@@ -520,6 +520,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 	 */
 	@Override
 	protected final void initServletBean() throws ServletException {
+		logger.info(getClass().getSimpleName() + " initServletBean ...");
 		getServletContext().log("Initializing Spring " + getClass().getSimpleName() + " '" + getServletName() + "'");
 		if (logger.isInfoEnabled()) {
 			logger.info("Initializing Servlet '" + getServletName() + "'");
@@ -596,6 +597,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 			// support or the context injected at construction time had already been
 			// refreshed -> trigger initial onRefresh manually here.
 			synchronized (this.onRefreshMonitor) {
+				logger.info(getClass().getSimpleName() + " initWebApplicationContext ...");
 				onRefresh(wac);
 			}
 		}

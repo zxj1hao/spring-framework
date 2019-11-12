@@ -162,6 +162,8 @@ import org.springframework.web.util.WebUtils;
 @SuppressWarnings("serial")
 public class DispatcherServlet extends FrameworkServlet {
 
+	protected final Log logger = LogFactory.getLog(getClass());
+
 	/** Well-known name for the MultipartResolver object in the bean factory for this namespace. */
 	public static final String MULTIPART_RESOLVER_BEAN_NAME = "multipartResolver";
 
@@ -284,7 +286,9 @@ public class DispatcherServlet extends FrameworkServlet {
 		// Load default strategy implementations from properties file.
 		// This is currently strictly internal and not meant to be customized
 		// by application developers.
+		//加载默认属性配置文件
 		try {
+			System.out.println("dispacherServelet static");
 			ClassPathResource resource = new ClassPathResource(DEFAULT_STRATEGIES_PATH, DispatcherServlet.class);
 			defaultStrategies = PropertiesLoaderUtils.loadProperties(resource);
 		}
@@ -492,6 +496,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	 */
 	@Override
 	protected void onRefresh(ApplicationContext context) {
+		logger.info(getClass().getSimpleName() + " onRefresh ...");
 		initStrategies(context);
 	}
 
@@ -500,6 +505,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	 * <p>May be overridden in subclasses in order to initialize further strategy objects.
 	 */
 	protected void initStrategies(ApplicationContext context) {
+		logger.info(getClass().getSimpleName() + " initStrategies ...");
 		initMultipartResolver(context);
 		initLocaleResolver(context);
 		initThemeResolver(context);
